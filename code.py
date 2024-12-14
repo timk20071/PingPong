@@ -10,11 +10,13 @@ import sys
     # reset initialisation
 reset = digitalio.DigitalInOut(board.GP3)
 reset.direction = digitalio.Direction.INPUT
+brightness = 1 # Brightness: int value which can be 1 to 15
 
     # matrix initialisation
 spi = busio.SPI(clock=board.GP10, MOSI=board.GP11, MISO=board.GP12)
 cs = digitalio.DigitalInOut(board.GP9)
 matrix = matrices.Matrix8x8(spi, cs)
+matrix.brightness(brightness)
 
     # button initialisation
 leftup = digitalio.DigitalInOut(board.GP18)
